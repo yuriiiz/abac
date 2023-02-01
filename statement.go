@@ -22,7 +22,7 @@ type Statement struct {
 	Conditions Conditions
 }
 
-func (s Statement) Allow(action string, resource Resource, attributes Attributes) error {
+func (s Statement) Validate(action string, resource Resource, attributes Attributes) error {
 	if !s.Resources.Match(resource) {
 		return ErrStatementNotMatch
 	}

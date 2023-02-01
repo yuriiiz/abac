@@ -72,19 +72,19 @@ resource = Resource{
     ResourceType: "resource_type_1",
     ResourceName: "resource_name",
 }
-fmt.Println(policy.Allow("read", resource, attributes)) // -> nil
+fmt.Println(policy.Validate("read", resource, attributes)) // -> nil
 
 resource = Resource{
     ResourceType: "resource_type_2",
     ResourceName: "prefix_resource_name",
 }
-fmt.Println(policy.Allow("read", resource, attributes)) // -> nil
+fmt.Println(policy.Validate("read", resource, attributes)) // -> nil
 
 resource = Resource{
     ResourceType: "resource_type_2",
     ResourceName: "resource_name",
 }
-fmt.Println(policy.Allow("read", resource, attributes)) // -> ErrStatementNotMatch
+fmt.Println(policy.Validate("read", resource, attributes)) // -> ErrStatementNotMatch
 
 resource = Resource{
     ResourceType: "resource_type_1",
@@ -104,5 +104,5 @@ attributes = []Attribute{
         Value:     1650000000,
     },
 }
-fmt.Println(policy.Allow("write", resource, attributes)) // -> ErrDeniedByStatement
+fmt.Println(policy.Validate("write", resource, attributes)) // -> ErrDeniedByStatement
 ```
